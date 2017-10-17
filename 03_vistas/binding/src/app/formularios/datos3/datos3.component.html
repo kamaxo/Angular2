@@ -1,0 +1,9 @@
+<div>
+  <p>
+    <label for="name">Dime tu nombre:</label>
+    <input type="text" id="name" name="name" #inputName>
+  </p>
+  <button (click)="btnClearForm()">Borrar</button>
+  <h2>Resultados usando #</h2>
+  <p>Hola {{inputName.value}}</p>
+</div>
