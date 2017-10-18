@@ -15,4 +15,7 @@ export class PadreComponent implements OnInit {
     this.name = '';
   }
 
+  btnEvent(pName) {
+    this.name = pName;
+  }
 }

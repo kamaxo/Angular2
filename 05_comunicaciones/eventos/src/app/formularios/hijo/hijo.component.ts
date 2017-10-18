@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hijo',
@@ -8,9 +8,18 @@ import { Component, OnInit, Input  } from '@angular/core';
 export class HijoComponent implements OnInit {
 
   @Input() name: string;
-  constructor() { }
+  @Output() event: EventEmitter<string>;
+  namePref: string;
+
+  constructor() {
+    this.event = new EventEmitter();
+  }
 
   ngOnInit() {
   }
 
+  btnResponse() {
+    this.name = '';
+    this.event.emit(this.namePref);
+  }
 }
