@@ -9,12 +9,20 @@ export class Datos1Component implements OnInit {
 
   sIdea: string;
   aIdeas: Array<string>;
+  estiloColor: string;
+  tamLetra: number;
+  estilos: string;
+  oEstilo: {};
 
   constructor() { }
 
   ngOnInit() {
     this.sIdea = '';
     this.aIdeas = [];
+    this.estiloColor = 'blue';
+    this.tamLetra = 2;
+    this.estilos = 'color: blue';
+    this.oEstilo = {'color': 'blue', 'font-size': '14px'};
   }
 
   btnAdd() {

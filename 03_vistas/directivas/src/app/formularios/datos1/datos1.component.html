@@ -1,7 +1,18 @@
 <div class="container">
-  <p>
+  <p [style.color]="estiloColor" [style.font-size.em]="tamLetra">
     <label for="idea">Dime una idea:</label>
     <input type="text" id="idea" name="idea" [(ngModel)]="sIdea">
+  </p>
+  <!--
+  <p [style]="estilos">
+      <label for="idea1">Dime una idea (ngStyle con string):</label>
+  </p>
+-->
+  <p [ngStyle]="oEstilo">
+      <label for="idea2">Dime una idea (ngStyle con objeto):</label>
+  </p>
+  <p>
+      Estilos: {{estilos | json}}
   </p>
   <button (click)="btnAdd()">Añadir</button>
   <button (click)="btnClearForm()">Limpiar</button>
