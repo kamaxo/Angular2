@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+interface Book {
+  title: string;
+  author: string;
+  editorial: string;
+  date: string;
+}
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -12,12 +19,14 @@ export class FormularioComponent implements OnInit {
   // que se asociara a un formulario o subformulario (en casos complejos)
 
   formLibros: FormGroup;
+  aBooks: Array<Book>;
 
   // Se inyecta formBuilder para instaciar el FormGroup
   // correspondiente a la propiedad que se acaba de definir
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.aBooks = [];
 
     // Gracias al servicio FormBiulder, se instancia un FormGroup
     // pándole como parámetro el objeto con la definición del formulario
@@ -30,7 +39,7 @@ export class FormularioComponent implements OnInit {
 
     this.formLibros = this.formBuilder.group({
       titulo: ['', Validators.required],
-      autor: [],
+      autor: ['', Validators.required],
       editorial: [],
       fecha: ['2017']
     });
@@ -40,6 +49,7 @@ export class FormularioComponent implements OnInit {
 
     if (this.formLibros.valid) {
       console.log (this.formLibros.value);
+      this.aBooks.push(this.formLibros.value);
     }
   }
 }
