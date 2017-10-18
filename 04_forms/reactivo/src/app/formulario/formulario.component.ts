@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Book {
-  title: string;
-  author: string;
+  titulo: string;
+  autor: string;
   editorial: string;
-  date: string;
+  fecha: string;
 }
 
 @Component({
