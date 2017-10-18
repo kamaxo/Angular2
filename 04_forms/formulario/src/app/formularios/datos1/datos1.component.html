@@ -1,4 +1,4 @@
-<form class="container">
+<form novalidate class="container" (ngSubmit)="btnSend()" #myForm="ngForm">
     <p>
         <label for="author">Autor:</label>
         <input type="text" id="author" name="author" [(ngModel)]="oBook.author">
@@ -34,33 +34,12 @@
           <option *ngFor="let country of aCountries" [ngValue]="country">{{country.name}}</option>
         </select>
     </p>
-    <h2>Resultado: </h2>
-    <p>{{oBook | json}}</p>
+    <button (click)="btnSend()">Enviar</button>
+    <button type=submit>Enviar (type=submit)</button>
+    <button type=button (click)="btnClearForm()">Limpiar</button>
 </form>
-<div class="container">
-  <button (click)="btnAdd()">Añadir</button>
-  <button (click)="btnClearForm()">Limpiar</button>
-  <!--
-  <div *ngIf="aIdeas.length">
-    <h2>Lista de ideas (con *ngIf)</h2>
-    <ul>
-      <li *ngFor="let idea of aIdeas; let i = index">{{i+1}} - {{idea}}</li>
-    </ul>
-  </div>
-  <div [hidden]="aIdeas.length? false: true">
-      <h2>Lista de ideas (con hidden)</h2>
-      <ul>
-        <li *ngFor="let idea of aIdeas; let i = index">{{i+1}} - {{idea}}</li>
-      </ul>
-  </div>
-
-  <div *ngIf="aIdeas.length > 0; then ideasTemplate else vacioTemplate"></div>
-  <ng-template #ideasTemplate class="lista">
-      <h2>Lista de ideas</h2>
-      <ul><li *ngFor="let idea of aIdeas">{{idea}}</li></ul>
-  </ng-template>
-  <p>Escribe alguna idea</p>
-  <ng-template #vacioTemplate>
-  </ng-template>  
--->
+<div class="container" *ngIf="isSent">
+  <h2>Resultado: </h2>
+  <p>{{oBook | json}}</p>
 </div>
+      
