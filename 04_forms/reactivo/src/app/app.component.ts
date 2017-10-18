@@ -6,10 +6,15 @@ import { Component } from '@angular/core';
 // Podría llevarse a un fichhero inedpendiente, exportarse
 // y luego importarse en este
 
+interface Provincia {
+  idProvincia: number;
+  nombre: string;
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+}
