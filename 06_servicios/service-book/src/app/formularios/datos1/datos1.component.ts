@@ -24,7 +24,7 @@ export class Datos1Component implements OnInit {
     this.btnClearForm();
   }
 
-  btnFind(){
+  btnSearch(){
     //this.aBooks = this.booksService.getBooks(this.sKey);
     this.aBooks = [];
 

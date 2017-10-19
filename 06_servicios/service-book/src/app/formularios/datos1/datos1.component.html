@@ -2,11 +2,11 @@
     <h2>Buscar libros</h2>
     <label for="key">Clave</label>
     <input type="text" placeholder="Escribe un clave de libro" [(ngModel)]="sKey" id="key" name="key">
-    <button (click)="btnFind()">Buscar</button>
+    <button (click)="btnSearch()">Buscar</button>
     <button type=button (click)="btnClearForm()">Limpiar</button>
 </div>
-<div *ngIf="aBooks.length; then buscarOk else buscarError"></div>
-<ng-template #buscarOk>
+<div *ngIf="aBooks.length; then searchOk else searchError"></div>
+<ng-template #searchOk>
     <div class="container" *ngIf="aBooks.length > 0">
         <h2>Resultado de la busqueda</h2>
         <ul>
@@ -14,7 +14,7 @@
         </ul>
     </div>
 </ng-template>
-<ng-template #buscarError>
+<ng-template #searchError>
     <div class="container" *ngIf="aBooks.length > 0">
         <h2>Ningun libro coincide con tu busqueda</h2>
     </div>
