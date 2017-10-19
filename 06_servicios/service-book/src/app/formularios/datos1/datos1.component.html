@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Buscar libros</h2>
+    <label for="key">Clave</label>
+    <input type="text" placeholder="Escribe un clave de libro" [(ngModel)]="sKey" id="key" name="key">
+    <button (click)="btnFind()">Buscar</button>
+    <button type=button (click)="btnClearForm()">Limpiar</button>
+</div>
+<div class="container" *ngIf="aBooks.length > 0">
+    <h2>Libros sobre {{sKey}}</h2>
+    <ul>
+      <li *ngFor="let book of aBooks">{{book}}</li>
+    </ul>
+</div>      
