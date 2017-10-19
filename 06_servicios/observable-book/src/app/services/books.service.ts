@@ -9,13 +9,13 @@ export class BooksService {
 
   constructor(private http: Http) { }
 
-  getBooks(key: string){
+  getBooks(key: string) {
     return this.http.get(URL + key).map(
       response => this.extractTitles(response));
   }
 
   private extractTitles(response: Response) {
-    return response.json().items.map(book => book.volumeInfo.title)
+    return response.json().items.map(book => book.volumeInfo.title);
   }
 
 }
