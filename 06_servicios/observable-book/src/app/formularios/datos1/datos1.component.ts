@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
 import { BooksService } from './../../services/books.service';
 
 @Component({
@@ -21,7 +22,10 @@ export class Datos1Component implements OnInit {
   }
 
   btnSearch() {
-    this.aBooks = this.booksService.getBooks(this.sKey);
+    this.booksService.getBooks(this.sKey).subscribe(
+      books => this.aBooks = books,
+      error => console.error(error)
+    );
   }
 
   btnClearForm() {

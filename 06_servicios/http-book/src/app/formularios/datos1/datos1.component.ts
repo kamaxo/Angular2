@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
 import { BooksService } from './../../services/books.service';
+
+const URL = 'https://www.googleapis.com/books/v1/volumes?q=intitle:';
 
 @Component({
   selector: 'app-datos1',
@@ -13,7 +16,7 @@ export class Datos1Component implements OnInit {
   url: string;
 
 
-  constructor(private booksService: BooksService) { }
+  constructor(private http: Http) { }
 
   ngOnInit() {
     // Inicializamos el objeto
@@ -21,7 +24,19 @@ export class Datos1Component implements OnInit {
   }
 
   btnSearch() {
-    this.aBooks = this.booksService.getBooks(this.sKey);
+    this.aBooks = [];
+
+    this.http.get(URL + this.sKey).subscribe(
+      response => {
+        console.log(response.json());
+        const data = response.json();
+        for (var i = 0; i < data.items.length; i++) {
+          let bookTitle = data.items[i].volumeInfo.title;
+          this.aBooks.push(bookTitle);
+        }
+      },
+      error => console.log(error)
+    );
   }
 
   btnClearForm() {
